@@ -15,8 +15,8 @@ const fileUpload = require('express-fileupload');
 //connecting to database
 const { Client } = require('pg')
 const client = new Client({
-  user: 'Firmansyah',
-  host: 'localhost',
+  user: 'firmansyah',
+  host: '127.0.0.1',
   database: 'projectmanagement',
   password: '123456',
   port: 5432
