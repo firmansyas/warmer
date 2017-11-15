@@ -8,7 +8,7 @@ module.exports = function(db) {
   router.get('/', function(req, res, next) {
     //frontpage
     var message = new Array(req.flash('loginMessage')[0])
-    res.render('index', { title: 'Login Page', message: message } );
+    res.render('main_menu/index', { title: 'Login Page', message: message } );
   });
 
   router.post('/', function(req, res, next) {
@@ -40,7 +40,7 @@ module.exports = function(db) {
   //daftar user
   router.get('/register', function(req, res, next) {
     var message = new Array(req.flash('registerMessage')[0])
-    res.render('index', { title: 'Register Account', message: message } );
+    res.render('main_menu/index', { title: 'Register Account', message: message } );
   });
 
   router.post('/register', function(req, res, next) {
@@ -79,7 +79,7 @@ module.exports = function(db) {
 
   router.get('/home', userChecker, function(req, res) {
 
-    res.render('home', { title: 'Welcome', page: "home", user: req.session.user} );
+    res.render('main_menu/home', { title: 'Welcome', page: "home", user: req.session.user} );
   });
 
 

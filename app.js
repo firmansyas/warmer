@@ -37,7 +37,8 @@ client.connect()
 var index = require("./routes/index") (client); //Passing arguments to require (when loading module)
 var users = require("./routes/users") (client);
 var setting = require("./routes/setting") (client);
-var pelanggan = require("./routes/pelanggan") (client);
+var customers = require("./routes/customers") (client);
+var barang = require("./routes/barang") (client);
 
 
 var app = express();
@@ -66,7 +67,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use('/', index);
 app.use('/users', users);
 app.use('/setting', setting);
-app.use('/pelanggan', pelanggan)
+app.use('/customers', customers);
+app.use('/barang', barang);
 
 
 
@@ -81,8 +83,8 @@ app.use(function(req, res, next) {
 app.use("/", index);
 app.use("/users", users);
 app.use("/setting", setting);
-app.use("/setting", setting);
-app.use("/pelanggan", pelanggan);
+app.use('/customers', customers);
+app.use("/barang", barang);
 
 
 
