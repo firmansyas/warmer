@@ -6,7 +6,7 @@ var passwordHash = require('password-hash');
 module.exports = function(db) {
   /* GET users listing. */
 
-  router.get('/profile', userChecker, function(req, res, next) {
+  router.get('/', userChecker, function(req, res, next) {
     db.query (`select * from users where userid = ${req.session.user.userid}`, (err, data) => {
 
       res.render('users/profile', {title: "User Profile", page: "profile", user:req.session.user, item: data.rows[0]});

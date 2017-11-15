@@ -10,7 +10,7 @@ module.exports = function(db) {
     let sqlQuery = `SELECT * FROM users`
     db.query(sqlQuery, function(err, listUsers) {
 
-      res.render('projects/details/setting', {
+      res.render('users/setting', {
         title: "Authentication",
         page: "setting",
         listUsers: req.session.user,

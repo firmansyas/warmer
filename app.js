@@ -14,6 +14,7 @@ const fileUpload = require('express-fileupload');
 
 //connecting to database
 const { Client } = require('pg')
+
 const client = new Client({
   user: 'firmansyah',
   host: '127.0.0.1',
@@ -35,9 +36,8 @@ client.connect()
 //connecting to the routes
 var index = require("./routes/index") (client); //Passing arguments to require (when loading module)
 var users = require("./routes/users") (client);
-var projects = require("./routes/projects") (client);
 var setting = require("./routes/setting") (client);
-var aboutme = require("./routes/aboutme") (client);
+var pelanggan = require("./routes/pelanggan") (client);
 
 
 var app = express();
@@ -65,9 +65,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/projects', projects);
 app.use('/setting', setting);
-app.use('/aboutme', aboutme);
+app.use('/pelanggan', pelanggan)
 
 
 
@@ -81,9 +80,10 @@ app.use(function(req, res, next) {
 
 app.use("/", index);
 app.use("/users", users);
-app.use("/projects", projects);
 app.use("/setting", setting);
-app.use('/aboutme', aboutme);
+app.use("/setting", setting);
+app.use("/pelanggan", pelanggan);
+
 
 
 

@@ -1,21 +1,207 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-  <div class="container" style="float: left; width: 20%">
-    <ul class="nav nav-sidebar">
-      <li <%= (page === "overview") ? " class=active" : "" %>><a href="/projects/details/<%=idURL%>/overview">Overview <% if(page === "overview"){%> <span class="sr-only">(current)</span> <% } %></a></li>
-      <li <%= (page === "activity") ? " class=active" : "" %>><a href="/projects/details/<%=idURL%>/activity">Activity <% if(page === "activity"){%> <span class="sr-only">(current)</span> <% } %></a></li>
-      <li <%= (page === "members") ? " class=active" : "" %>><a href="/projects/details/<%=idURL%>/members">Members <% if(page === "members"){%> <span class="sr-only">(current)</span> <% } %></a></li>
-      <li <%= (page === "issues") ? " class=active" : "" %>><a href="/projects/details/<%=idURL%>/issues">Issues <% if(page === "issues"){%> <span class="sr-only">(current)</span> <% } %></a></li>
+<!-- samping -->
+<div id="left">
+  <div class="media user-media bg-dark dker">
+    <div class="user-media-toggleHover">
+      <span class="fa fa-user"></span>
+    </div>
 
-    </ul>
+    <div class="user-wrapper bg-dark">
+      <a class="user-link" href="">
+        <img class="media-object img-thumbnail user-img" alt="User Picture" src="images/ikan.jpg" style="width:64px;height:64px;">
+      </a>
+
+      <div class="media-body">
+        <h5 class="media-heading"><%= user.firstname + user.lastname %></h5>
+        <ul class="list-unstyled user-info">
+          <li><a href=""> <%= user.privilege %></a></li>
+          <li>Last Access : <br>
+            <small><i class="fa fa-calendar"></i>&nbsp;16 Mar 16:32</small>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
+<!-- #menu -->
+<ul id="menu" class="bg-blue dker">
+  <li class="nav-header">Menu</li>
+  <li class="nav-divider"></li>
+  <li class="">
+    <a href="/home">
+      <i class="fa fa-home"></i><span class="link-title">&nbsp;Home</span>
+    </a>
+  </li>
+
+  <li class="nav-divider"></li>
+  <li class="">
+    <a href="javascript:;">
+      <i class="fa fa-building "></i>
+      <span class="link-title">Pelanggan</span>
+      <span class="fa arrow"></span>
+    </a>
+    <ul class="collapse">
+      <li>
+        <a href="boxed.html">
+          <i class="fa fa-angle-right"></i>&nbsp; Data Pelanggan </a>
+        </li>
+        <li>
+          <a href="boxed.html">
+            <i class="fa fa-angle-right"></i>&nbsp; Tambah Baru Pelanggan </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-divider"></li>
+      <li class="">
+        <a href="javascript:;">
+          <i class="fa fa-tasks"></i>
+          <span class="link-title">Barang</span>
+          <span class="fa arrow"></span>
+        </a>
+        <ul class="collapse">
+          <li>
+            <a href="bgcolor.html">
+              <i class="fa fa-angle-right"></i>&nbsp; Data Barang </a>
+            </li>
+            <li>
+              <a href="bgimage.html">
+                <i class="fa fa-angle-right"></i>&nbsp; Tambah Baru Barang </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-divider"></li>
+          <li class="">
+            <a href="javascript:;">
+              <i class="fa fa-tasks"></i>
+              <span class="link-title">Merk Barang</span>
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="collapse">
+              <li>
+                <a href="bgcolor.html">
+                  <i class="fa fa-angle-right"></i>&nbsp; Data Merk Barang </a>
+                </li>
+                <li>
+                  <a href="bgimage.html">
+                    <i class="fa fa-angle-right"></i>&nbsp; Tambah Baru Merk Barang </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-divider"></li>
+              <li class="">
+                <a href="javascript:;">
+                  <i class="fa fa-tasks"></i>
+                  <span class="link-title">Kategori Barang</span>
+                  <span class="fa arrow"></span>
+                </a>
+                <ul class="collapse">
+                  <li>
+                    <a href="bgcolor.html">
+                      <i class="fa fa-angle-right"></i>&nbsp; Data Kategori Barang </a>
+                    </li>
+                    <li>
+                      <a href="bgimage.html">
+                        <i class="fa fa-angle-right"></i>&nbsp; Tambah Baru Kategori Barang </a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-divider"></li>
+                  <li class="">
+                    <a href="table.html">
+                      <i class="fa fa-user"></i>
+                      <span class="link-title">Supplier</span>
+                      <span class="fa arrow"></span>
+                    </a>
+                    <ul class="collapse">
+                      <li>
+                        <a href="form-general.html">
+                          <i class="fa fa-angle-right"></i>&nbsp; Data Supplier </a>
+                        </li>
+                        <li>
+                          <a href="form-general.html">
+                            <i class="fa fa-angle-right"></i>&nbsp; Tambah Baru Supplier </a>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li class="nav-divider"></li>
+                      <li class="">
+                        <a href="javascript:;">
+                          <i class="fa fa-pencil"></i>
+                          <span class="link-title">
+                            Transaksi Penjualan
+                          </span>
+                          <span class="fa arrow"></span>
+                        </a>
+                        <ul class="collapse">
+                          <li>
+                            <a href="form-general.html">
+                              <i class="fa fa-angle-right"></i>&nbsp; Data Transaksi Penjualan </a>
+                            </li>
+                            <li>
+                              <a href="form-validation.html">
+                                <i class="fa fa-angle-right"></i>&nbsp; Tambah Transaksi Penjualan</a>
+                              </li>
+                              <li>
+                                <a href="form-wizard.html">
+                                  <i class="fa fa-angle-right"></i>&nbsp; Lihat Tagihan Penjualan</a>
+                                </li>
+                              </ul>
+                            </li>
+
+                            <li class="nav-divider"></li>
+                            <li class="">
+                              <a href="javascript:;">
+                                <i class="fa fa-pencil"></i>
+                                <span class="link-title">
+                                  Transaksi Pembelian
+                                </span>
+                                <span class="fa arrow"></span>
+                              </a>
+                              <ul class="collapse">
+                                <li>
+                                  <a href="form-general.html">
+                                    <i class="fa fa-angle-right"></i>&nbsp; Data Transaksi Pembelian </a>
+                                  </li>
+                                  <li>
+                                    <a href="form-validation.html">
+                                      <i class="fa fa-angle-right"></i>&nbsp; Tambah Transaksi Pembelian</a>
+                                    </li>
+                                    <li>
+                                      <a href="form-wizard.html">
+                                        <i class="fa fa-angle-right"></i>&nbsp; Lihat Tagihan Pembelian</a>
+                                      </li>
+                                    </ul>
+                                  </li>
+
+                                  <li class="nav-divider"></li>
+                                  <li>
+                                    <a href="calendar.html">
+                                      <i class="fa fa-calendar"></i>
+                                      <span class="link-title">
+                                        Calendar
+                                      </span>
+                                    </a>
+                                  </li>
+
+                                  <li class="nav-divider"></li>
+                                  <li class="">
+                                    <a href="table.html">
+                                      <i class="fa fa-user"></i>
+                                      <span class="link-title">Profile</span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    <ul class="collapse">
+                                      <li>
+                                        <a href="/users">
+                                          <i class="fa fa-angle-right"></i>&nbsp; Profile </a>
+                                        </li>
+                                        <li>
+                                          <a href="/setting">
+                                            <i class="fa fa-angle-right"></i>&nbsp; Authorization </a>
+                                          </li>
+                                        </ul>
+                                      </li>
+                                    </div>

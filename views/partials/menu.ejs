@@ -1,38 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-  <div class="navbar nav-wrap navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href=""> Project Management System</a>
-        </li>
-        <li<%= (page === "home") ? " class=active" : "" %>><a href="/home"> <span class=""></span> Home<% if(page === "home"){%> <% } %></a></li>
-        <li<%= (page === "project") ? " class=active" : "" %>><a href="/projects"> <span class=""></span> Projects<% if(page === "project"){%> <% } %></a></li>
-        <li<%= (page === "profile") ? " class=active" : "" %>><a href="/users/profile"><span class=""></span> Profile<% if(page === "profile"){%>  <% } %></a></li>
-      </ul>
+<body class=" ">
+  <div class="bg-dark dk" id="wrap">
+    <div id="top">
 
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href=""  class="" class="dropdown-toggle" data-toggle="dropdown" >  Welcome : <%= user.firstname + user.lastname %> <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/aboutme"><span class="glyphicon glyphicon-text-background"></span> About Me</a></li>
-            <li><a href="/setting"><span class="glyphicon glyphicon-cog"></span> Setting</a></li>
-            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
-          </ul>
-        </li>
-      </ul>
+      <!-- .navbar -->
+      <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid">
+
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <header class="navbar-header">
+            <br> PT. KARSA MANDIRI ALKESINDO
+            <hr>
+
+            <!-- //ukuran nya 121x42 -->
+          </header>
+
+          <!-- /////////////////////////////////////////////// -->
+          <div class="topnav">
+
+            <div class="btn-group">
+              <a data-placement="bottom" data-original-title="Fullscreen" data-toggle="tooltip"
+              class="btn btn-default btn-sm" id="toggleFullScreen">
+              <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+          </div>
+
+          <div class="btn-group">
+            <a data-placement="bottom" data-original-title="E-mail" data-toggle="tooltip" href="https://mail.google.com/mail/u/0/#inbox"
+            class="btn btn-default btn-sm">
+            <i class="fa fa-envelope"></i>
+          </a>
+          <a data-placement="bottom" data-original-title="Messages" href="#" data-toggle="tooltip"
+          class="btn btn-default btn-sm">
+          <i class="fa fa-comments"></i>
+        </a>
+      </div>
+
+      <div class="btn-group">
+        <a href="/logout" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom"
+        class="btn btn-metis-1 btn-sm">
+        <i class="fa fa-power-off"></i>
+      </a>
     </div>
+
   </div>
+</div>
+</div>
 </nav>
+</div>
 </body>

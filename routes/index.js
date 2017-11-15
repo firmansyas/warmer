@@ -77,7 +77,7 @@ module.exports = function(db) {
     });
   });
 
-  router.get('/home', function(req, res) {
+  router.get('/home', userChecker, function(req, res) {
 
     res.render('home', { title: 'Welcome', page: "home", user: req.session.user} );
   });
