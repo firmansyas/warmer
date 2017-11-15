@@ -39,6 +39,12 @@ var users = require("./routes/users") (client);
 var setting = require("./routes/setting") (client);
 var customers = require("./routes/customers") (client);
 var barang = require("./routes/barang") (client);
+var m_barang = require("./routes/m_barang") (client);
+var k_barang = require("./routes/k_barang") (client);
+var supplier = require("./routes/supplier") (client);
+var t_penjualan = require("./routes/t_penjualan") (client);
+var t_pembelian = require("./routes/t_pembelian") (client);
+var calendar = require("./routes/calendar") (client);
 
 
 var app = express();
@@ -69,6 +75,12 @@ app.use('/users', users);
 app.use('/setting', setting);
 app.use('/customers', customers);
 app.use('/barang', barang);
+app.use('/m_barang', m_barang);
+app.use('/k_barang', k_barang);
+app.use('/supplier', supplier);
+app.use('/t_penjualan', t_penjualan);
+app.use('/t_pembelian', t_pembelian);
+app.use('/calendar', calendar);
 
 
 
@@ -85,6 +97,11 @@ app.use("/users", users);
 app.use("/setting", setting);
 app.use('/customers', customers);
 app.use("/barang", barang);
+app.use("/k_barang", k_barang);
+app.use("/supplier", supplier);
+app.use("/t_penjualan", t_penjualan);
+app.use("/t_pembelian", t_pembelian);
+app.use("/calendar", calendar);
 
 
 

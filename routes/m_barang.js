@@ -7,7 +7,7 @@ const userChecker = require('../helper/userchecker')
 module.exports = function(db) {
   router.get('/', function(req, res, next) {
 
-    res.render('barang/barang', {title: "Data Barang", page: "barang", user:req.session.user} );
+    res.render('m_barang/m_barang', {title: "Data Merk Barang", page: "m_barang", user:req.session.user} );
   });
   return router;
 }
