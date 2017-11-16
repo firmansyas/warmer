@@ -9,5 +9,9 @@ module.exports = function(db) {
 
     res.render('supplier/supplier', {title: "Data Supplier", page: "supplier", user:req.session.user} );
   });
+  router.get('/add', function(req, res, next) {
+
+    res.render('supplier/add', {title: "Tambah Data Supplier", page: "supplier", user:req.session.user} );
+  });
   return router;
-}
+};

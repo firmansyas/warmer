@@ -9,5 +9,10 @@ module.exports = function(db) {
 
     res.render('k_barang/k_barang', {title: "Data Kategori Barang", page: "k_barang", user:req.session.user} );
   });
+
+  router.get('/add', function(req, res, next) {
+
+    res.render('k_barang/add', {title: "Tambah Data Kategori Barang", page: "k_barang", user:req.session.user} );
+  });
   return router;
 }

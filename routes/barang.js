@@ -9,5 +9,11 @@ module.exports = function(db) {
 
     res.render('barang/barang', {title: "Data Barang", page: "barang", user:req.session.user} );
   });
-  return router;
-}
+
+  router.get('/add', function(req, res, next) {
+
+    res.render('barang/add', {title: "Tambah Data Barang", page: "barang", user:req.session.user} );
+  });
+
+  return router
+};
