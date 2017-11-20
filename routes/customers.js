@@ -9,11 +9,17 @@ module.exports = function(db) {
 
     res.render('customers/customers', {title: "Data Pelanggan", page: "customers", user:req.session.user} );
   });
-  
+
   router.get('/add', function(req, res, next) {
 
     res.render('customers/add', {title: "Tambah Data Pelanggan", page: "customers", user:req.session.user} );
   });
+
+  router.get('/edit', function(req, res, next) {
+
+    res.render('customers/edit', {title: "Edit Data Pelanggan", page: "customers", user:req.session.user} );
+  });
+
 
 
   return router;

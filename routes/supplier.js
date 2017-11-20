@@ -13,5 +13,9 @@ module.exports = function(db) {
 
     res.render('supplier/add', {title: "Tambah Data Supplier", page: "supplier", user:req.session.user} );
   });
+  router.get('/edit', function(req, res, next) {
+
+    res.render('supplier/edit', {title: "Tambah Data Supplier", page: "supplier", user:req.session.user} );
+  });
   return router;
 };

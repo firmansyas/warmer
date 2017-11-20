@@ -15,5 +15,10 @@ module.exports = function(db) {
     res.render('barang/add', {title: "Tambah Data Barang", page: "barang", user:req.session.user} );
   });
 
+  router.get('/edit', function(req, res, next) {
+
+    res.render('barang/edit', {title: "Edit Data Barang", page: "barang", user:req.session.user} );
+  });
+
   return router
 };

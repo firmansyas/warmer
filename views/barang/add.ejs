@@ -1,21 +1,107 @@
 <% include ../partials/header %>
 <% include ../partials/menu %>
 <% include ../partials/sidebar %>
-
 <div class="bg-dark dk" id="wrap">
   <!-- #menu -->
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
 
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="box">
+              <header>
+                <div class="icons"><i class="fa fa-edit"></i></div>
+                <h5>Tambah Data Barang</h5>
+              </header>
+
+              <div id="div-4" class="body">
+                <form class="form-horizontal">
 
 
+                  <a href="/barang" style="text-decoration:none">  <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i> </a>
+
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-2">Kode Barang</label>
+                    <div class="col-lg-9">
+                      <input type="email" id="text1" placeholder="Email" name="email" class="form-control">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-2">Nomer Izin Edar</label>
+
+                    <div class="col-lg-9">
+                      <input type="text" id="text1" placeholder="First Name" name="firstname" class="form-control" >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-2">Nama Barang</label>
+                    <div class="col-lg-9">
+                      <input type="text" id="text1" placeholder="Last Name" name="lastname" class="form-control" >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-2">Asal Negara</label>
+                    <div class="col-lg-9">
+                      <input type="text" id="text1" placeholder="" name="pass" class="form-control" >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-2">Kategori Barang</label>
+                    <div class="col-lg-9">
+                      <select id="text1" class="form-control">
+                        <option value="volvo">Volvo</option>
+                      </select>
+                    </div>
+                  </div>
 
 
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-2">Merk Barang</label>
+                    <div class="col-lg-9">
+                      <select id="text1" class="form-control">
+                        <option value="volvo">Volvo</option>
+                      </select>
+                    </div>
+                  </div>
 
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-2">Harga Beli Barang (Rp)</label>
+                    <div class="col-lg-9">
+                      <input type="number" id="currency" placeholder="" name="currency" class="form-control" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-2">Stock Awal</label>
+                    <div class="col-lg-9">
+                      <input type="number" id="text1" placeholder="" name="pass" class="form-control" >
+                    </div>
+                  </div>
+
+                  <div class="form-actions no-margin-bottom">
+                    <label class="control-label col-lg-2"></label>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                    <input type="reset" value="Reset" class="btn btn-danger"> </a>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
       </div>
     </div>
+
   </div>
 </div>
+
+
+
 
 <% include ../partials/footer %>
