@@ -13,5 +13,11 @@ module.exports = function(db) {
 
     res.render('m_barang/add', {title: "Tambah Data Merk Barang", page: "m_barang", user:req.session.user} );
   });
+
+  router.get('/edit', function(req, res, next) {
+
+    res.render('m_barang/edit', {title: "Edit Data Merk Barang", page: "m_barang", user:req.session.user} );
+  });
+
   return router;
 }

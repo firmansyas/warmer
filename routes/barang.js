@@ -22,7 +22,7 @@ module.exports = function(db) {
 
   router.get('/details', function(req, res, next) {
 
-    res.render('barang/details', {title: "Edit Data Barang", page: "barang", user:req.session.user} );
+    res.render('barang/details', {title: "Details Data Barang", page: "barang", user:req.session.user} );
   });
 
   return router
