@@ -1,0 +1,87 @@
+<% include ../partials/header %>
+<% include ../partials/menu %>
+<% include ../partials/sidebar %>
+<div class="bg-dark dk" id="wrap">
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="box">
+              <header>
+                <div class="icons"><i class="fa fa-archive"></i></div>
+                <h5>Details Data Barang</h5>
+              </header>
+              <div id="div-8" class="body">
+                <a href="/barang" style="text-decoration:none">  <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i> </a>
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-1">Nama Barang  </label>
+                    <div class="col-lg-7">
+                      <input type="email" id="text1" name="email" class="form-control" readonly>
+                    </div>
+                  <div class="col-md-4">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <h4 class="text-center">
+                          Current Stock</h4>
+                        </div>
+                        <div class="panel-body text-center">
+                          <p class="lead">
+                            <strong>100</strong></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                  <div id="collapse4" class="body">
+                    <table id="dataTable" class="table table-bordered table-condensed table-hover table-striped">
+                      <thead>
+                        <tr>
+                          <th class="text-center">No Invoice</th>
+                          <th class="text-center">Description</th>
+                          <th class="text-center">Stock in</th>
+                          <th class="text-center">Stock out</th>
+                          <th class="text-center">Current Stock</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="text-center">
+                          <td> Trident</td>
+                          <td>Internet Explorer 4.0</td>
+                          <td>Win 95+</td>
+                          <td>4</td>
+                          <td>X</td>
+
+                        </tr>
+                        <tr class="text-center">
+                          <td>abc</td>
+                          <td>Internet Explorer 4.0</td>
+                          <td>Win 95+</td>
+                          <td>4</td>
+                          <td>X</td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  $(function() {
+    Metis.MetisTable();
+    Metis.metisSortable();
+  });
+  </script>
+  <% include ../partials/footer %>
