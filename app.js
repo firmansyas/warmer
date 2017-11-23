@@ -18,7 +18,7 @@ const { Client } = require('pg')
 const client = new Client({
   user: 'firmansyah',
   host: '127.0.0.1',
-  database: 'projectmanagement',
+  database: 'warmer',
   password: '123456',
   port: 5432
 })

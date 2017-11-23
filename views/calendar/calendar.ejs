@@ -1,21 +1,126 @@
 <% include ../partials/header %>
 <% include ../partials/menu %>
 <% include ../partials/sidebar %>
+<body class="  ">
+  <div class="bg-dark dk" id="wrap">
+    <!-- #menu -->
+    <div id="content">
+      <div class="outer">
+        <div class="inner bg-light lter">
+          <div class="box">
+            <header>
+              <h5>Calendar</h5>
+            </header>
+            <div class="body">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="well well-sm">
+                    <div id="add-event-form">
+                      <fieldset>
+                        <legend>Add Custom Event</legend>
+                        <span class="help-block">Event Title</span>
+                        <input id="title" name="title" type="text" placeholder="event title" class="form-control input-small">
 
-<div class="bg-dark dk" id="wrap">
-  <!-- #menu -->
-  <div id="content">
-    <div class="outer">
-      <div class="inner bg-light lter">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="priority" value="label label-default" checked>
+                            <span class="label label-default">default</span>
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="priority" value="label label-primary">
+                            <span class="label label-primary">primary</span>
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="priority" value="label label-warning">
+                            <span class="label label-warning">warning</span>
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="priority" value="label label-success">
+                            <span class="label label-success">success</span>
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="priority" value="label label-info">
+                            <span class="label label-info">info</span>
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="priority" value="label label-danger">
+                            <span class="label label-danger">danger</span>
+                          </label>
+                        </div>
+                        <br>
+                        <button id="add-event" type="button" class="btn btn-sm btn-default">Add Event</button>
+                      </fieldset>
+                    </div>
+
+                  </div>
+                  <div class="well well-sm">
+                    <h4>Draggable Events</h4>
+                    <ul id='external-events' class="list-unstyled">
+                      <li class="external-event"><span class="label label-default">My Event 1</span></li>
+                      <li class="external-event"><span class="label label-primary">My Event 2</span></li>
+                      <li class="external-event"><span class="label label-danger">My Event 3</span></li>
+                      <li class="external-event"><span class="label label-success">My Event 4</span></li>
+                      <li class="external-event"><span class="label label-warning">My Event 5</span></li>
+                      <li class="external-event"><span class="label label-info">My Event 6</span></li>
+                    </ul>
 
 
+                    <div class="checkbox anim-checkbox h4">
+                      <input type="checkbox" id="drop-remove" class="danger">
+                      <label for="drop-remove">remove after drop</label>
+                    </div>
 
+                  </div>
+                </div>
+                <div id="calendar" class="col-lg-9" style="weight: 11px"></div>
+              </div>
+            </div>
+          </div>
 
-
-
+        </div>
+        <!-- /.inner -->
       </div>
+      <!-- /.outer -->
     </div>
   </div>
 </div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#calendar').fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'prev, today, month, next'
+
+    },
+    views: {
+      month: {
+        titleFormat: 'MMMM, YYYY'
+      }
+    },
+    selectable: true,
+    select: function(start, end, allDay) {
+      var title = prompt('Event Title:');
+    }
+
+    // put your options and callbacks here
+  })
+});
+</script>
+
 
 <% include ../partials/footer %>

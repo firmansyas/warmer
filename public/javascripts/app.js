@@ -1002,6 +1002,7 @@ return Metis;
 
     /*----------- BEGIN datatable CODE -------------------------*/
     $('#dataTable').dataTable({
+
     });
     /*----------- END datatable CODE -------------------------*/
 
