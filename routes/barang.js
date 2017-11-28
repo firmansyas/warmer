@@ -10,10 +10,15 @@ module.exports = function(db) {
     res.render('barang/barang', {title: "Data Barang", page: "barang", user:req.session.user} );
   });
 
-  router.get('/add', function(req, res, next) {
-
-    res.render('barang/add', {title: "Tambah Data Barang", page: "barang", user:req.session.user} );
+  router.get('/add', userChecker, function(req, res) {
+    db.query("SELECT * FROM users", function(err, barangData) {
+      res.render('barang/add', {title: "Tambah Data Barang", page: "barang", barangData: barangData.rows, user:req.session.user} );
+    });
   });
+
+  router.get('/add', userChecker, function(req, res) {
+
+  })
 
   router.get('/edit', function(req, res, next) {
 

@@ -7,16 +7,17 @@
 
     <div class="user-wrapper bg-dark">
       <a class="user-link" href="">
-        <img class="media-object img-thumbnail user-img" alt="User Picture" src="../images/ikan.jpg" style="width:64px;height:64px;">
+        <img class="media-object img-thumbnail user-img" alt="User Picture" src="../../images/ikan.jpg" style="width:64px;height:64px;">
       </a>
 
       <div class="media-body">
-        <h5 class="media-heading"><%= user.firstname + user.lastname %></h5>
+        <h5 class="media-heading"><%= user.firstname + ' ' + user.lastname %></h5>
         <ul class="list-unstyled user-info">
           <li><a href=""> <%= user.privilege %></a></li>
           <li>Last Access : <br>
-            <small><i class="fa fa-calendar"></i>&nbsp;Rabu, 16 Mar 16:32</small>
+            <small><i class="fa fa-calendar"></i>&nbsp;<%= user.lastlogin %></small>
           </li>
+
         </ul>
       </div>
     </div>

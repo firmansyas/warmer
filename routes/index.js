@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const userChecker = require('../helper/userchecker');
 const passwordHash = require('password-hash');
+const moment = require('moment');
 
 module.exports = function(db) {
   router.get('/', function(req, res, next) {
@@ -23,8 +24,12 @@ module.exports = function(db) {
         if(passwordHash.verify(req.body.pass, data.rows[0].password)) {
           delete data.rows[0].password;
           req.session.user = data.rows[0]
-          return res.redirect('/home')
-
+          console.log('apa');
+          db.query(`UPDATE users SET lastlogin = '${moment().format('LLLL')}' WHERE email = '${req.body.email}'`, function(err, updatedata) {
+            // console.log('test', `UPDATE users SET lastlogin = '${moment().format('LLLL')}' WHERE email = ${req.body.email}`);
+            // console.log('ini', updatedata);
+            return res.redirect('/home')
+          })
         } else {
           req.flash('loginMessage', 'password is not match');
           return res.redirect('/')
@@ -33,10 +38,9 @@ module.exports = function(db) {
       } else {
         req.flash('loginMessage', "email is not exist")
         return res.redirect('/')
-      }
+      };
     });
-  });
-
+  })
   //daftar user
   router.get('/register', function(req, res, next) {
     var message = new Array(req.flash('registerMessage')[0])
@@ -61,22 +65,20 @@ module.exports = function(db) {
         req.flash('registerMessage', 'email already registered');
         return res.redirect('/register')
       } else {
-        console.log('2');
-        const sqlinsert = `INSERT INTO users( email, password, firstname, lastname, projectcolumns, membercolumns, issuecolumns, privilege) VALUES('${req.body.email}','${passwordHash.generate(req.body.pass)}','${req.body.firstname}','${req.body.lastname}', '{}', '{}', '{}', 'User')`;
-        console.log(sqlinsert,'sql');
+        const sqlinsert = `INSERT INTO users(email, password, firstname, lastname, secretkey, lastlogin, privilege) VALUES('${req.body.email}','${passwordHash.generate(req.body.pass)}','${req.body.firstname}','${req.body.lastname}', '${req.body.secretkey}', '${moment().format('LLLL')}', 'User')`;
         db.query(sqlinsert, (err, data) => {
           if(err) {
             console.error(err);
             req.flash('registerMessage', 'something wrong please call administrator');
             return res.redirect('/register')
           }
+
           req.flash('registerMessage', 'registration successful, please log into your account');
           return res.redirect('/register')
         });
       }
     });
   });
-
   router.get('/home', userChecker, function(req, res) {
 
     res.render('main_menu/home', { title: 'Welcome', page: "home", user: req.session.user} );

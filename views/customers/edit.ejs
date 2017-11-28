@@ -1,6 +1,7 @@
 <% include ../partials/header %>
 <% include ../partials/menu %>
 <% include ../partials/sidebar %>
+
 <div class="bg-dark dk" id="wrap">
   <!-- #menu -->
   <div id="content">
@@ -16,77 +17,78 @@
               </header>
 
               <div id="div-4" class="body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="POST" action="/customer/edit/<%= idURL %>">
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Kode Customers</label>
                     <div class="col-lg-9">
-                      <input type="email" id="text1" placeholder="Email" name="email" class="form-control">
+                      <input type="text" id="text1" name="kocus" class="form-control" value="">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Nama Perusahaan</label>
                     <div class="col-lg-9">
-                      <input type="email" id="text1" placeholder="Email" name="email" class="form-control">
+                      <input type="text" id="text1" name="namap" class="form-control">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Nama Customers</label>
                     <div class="col-lg-9">
-                      <input type="email" id="text1" placeholder="Email" name="email" class="form-control">
+                      <input type="text" id="text1" name="namcus" class="form-control">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">NPWP</label>
                     <div class="col-lg-9">
-                      <input type="number" id="currency" placeholder="" name="currency" class="form-control" />
+                      <input type="number" id="text1" name="npwp" class="form-control" />
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Alamat</label>
                     <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="First Name" name="firstname" class="form-control" >
+                      <input type="text" id="text1" name="alamat" class="form-control" >
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="text1" class="control-label col-lg-2">Kota / Kabupaten</label>
+                    <label for="text1" class="control-label col-lg-2">Daerah</label>
                     <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="Last Name" name="lastname" class="form-control" >
+                      <input type="text" id="text1" name="daerah" class="form-control" >
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Kode Pos</label>
                     <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="" name="pass" class="form-control" >
+                      <input type="text" id="text1" name="kodepos" class="form-control" >
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Email</label>
                     <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="" name="pass" class="form-control" >
+                      <input type="email" id="text1" name="email" class="form-control" >
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">No Phone 1</label>
                     <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="" name="pass" class="form-control" >
+                      <input type="number" id="text1" name="npp" class="form-control" >
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">No Phone 2</label>
                     <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="" name="pass" class="form-control" >
+                      <input type="number" id="text1" name="npk" class="form-control" >
                     </div>
                   </div>
+
 
 
 
@@ -94,7 +96,7 @@
                   <div class="form-actions no-margin-bottom">
                     <label class="control-label col-lg-2"></label>
                     <input type="submit" value="Submit" class="btn btn-primary">
-                    <a href="/barang" <button class="btn btn-danger" type="button" name="button">Cancel </a> </button>
+                    <a href="/customers" <button class="btn btn-danger" type="button" name="button">Cancel </a> </button>
                   </div>
                 </div>
 
