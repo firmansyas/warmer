@@ -62,17 +62,16 @@ module.exports = function(db) {
         if (err){
           console.log(err);
         }
-        console.log('data kocus', customerData);
-      })
-      res.render('customers/edit', {
-        title: "Edit Data Pelanggan",
-        page: "customers",
-        query: req.query,
-        idURL: req.params.id,
-        moment: moment,
-        userData: userData.rows,
-        customerData: customerData.rows,
-        user:req.session.user
+        res.render('customers/edit', {
+          title: "Edit Data Pelanggan",
+          page: "customers",
+          query: req.query,
+          idURL: req.params.id,
+          moment: moment,
+          userData: userData.rows,
+          customerData: customerData.rows[0],
+          user:req.session.user
+        })
       });
     });
   });
