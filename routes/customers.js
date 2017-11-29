@@ -19,8 +19,6 @@ module.exports = function(db) {
         user:req.session.user
       });
     })
-
-
   });
 
   //---------------------------------------------------------------//
@@ -80,16 +78,26 @@ module.exports = function(db) {
   router.post('/edit/:id', userChecker, function(req, res) {
     let editCustomers = `UPDATE customers SET kocus = '${req.body.kocus}', namap = '${req.body.namap}', namcus = '${req.body.namcus}',
     npwp = '${req.body.npwp}', alamat ='${req.body.alamat}', daerah = '${req.body.daerah}', kodepos = '${req.body.kodepos}',
-    email = '${req.body.email}', npp = '${req.body.npp}', npk = '${req.body.npk}'`
-
+    email = '${req.body.email}', npp = '${req.body.npp}', npk = '${req.body.npk}' WHERE customersid = ${req.params.id}`;
     db.query(editCustomers, function (err, editCustomers) {
       if (err){
         console.log(err);
       }
-      res.redirect(`/customer/edit/${req.params.id}`)
+      res.redirect('/customers')
     })
   });
 
   //---------------------------------------------------------------//
+
+  router.get('/delete/:id', userChecker, function (req, res) {
+    let deleteCustomers = `DELETE FROM customers WHERE customersid = ${req.params.id}`
+    db.query(deleteCustomers, function (err) {
+      if (err){
+        console.log(err);
+      }
+      res.redirect('/customers')
+    })
+  })
+
   return router;
 }
