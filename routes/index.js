@@ -80,8 +80,15 @@ module.exports = function(db) {
     });
   });
   router.get('/home', userChecker, function(req, res) {
-
-    res.render('main_menu/home', { title: 'Welcome', page: "home", user: req.session.user} );
+    let customersData = `SELECT count(*) as total FROM customers`
+    db.query(customersData, function (err, customersData) {
+      res.render('main_menu/home', {
+        title: 'Welcome',
+        page: "home",
+        customersData: customersData.rows[0],
+        user: req.session.user
+      });
+    })
   });
 
 

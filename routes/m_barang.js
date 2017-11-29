@@ -5,7 +5,7 @@ const userChecker = require('../helper/userchecker')
 const moment = require('moment')
 
 module.exports = function(db) {
-  router.get('/', function(req, res) {
+  router.get('/', userChecker, function(req, res) {
     let m_barangData = `SELECT * FROM mbarang`
 
     db.query(m_barangData, function (err, m_barangData) {
@@ -22,7 +22,7 @@ module.exports = function(db) {
   });
 
   //---------------------------------------------------------------//
-  router.get('/add', function(req, res) {
+  router.get('/add', userChecker, function(req, res) {
     let query = `SELECT * FROM users`
     db.query(query, function (err, userData) {
       res.render('m_barang/add', {
@@ -31,11 +31,11 @@ module.exports = function(db) {
         userData: userData.rows,
         user:req.session.user
       });
-    })
+    });
   });
 
   //---------------------------------------------------------------//
-  router.post('/add', function (req, res) {
+  router.post('/add', userChecker, function (req, res) {
     let addData = `INSERT INTO mbarang (kombarang, namebarang, asalnegara)
     VALUES ('${req.body.kombarang}', '${req.body.namebarang}',
     '${req.body.asalnegara}')`
@@ -51,7 +51,7 @@ module.exports = function(db) {
 
 
   //---------------------------------------------------------------//
-  router.get('/edit/:id', function(req, res, next) {
+  router.get('/edit/:id', userChecker, function(req, res, next) {
     let userData = `SELECT * FROM users`
     db.query(userData, function (err, userData) {
       if (err){
@@ -76,7 +76,7 @@ module.exports = function(db) {
   });
 
   //---------------------------------------------------------------//
-  router.post('/edit/:id', function (req, res) {
+  router.post('/edit/:id', userChecker, function (req, res) {
     let editM_barang = `UPDATE mbarang SET kombarang = '${req.body.kombarang}',
     namebarang = '${req.body.namebarang}', asalnegara = '${req.body.asalnegara}' WHERE mbarangid = ${req.params.id}`;
     db.query(editM_barang, function (err, editM_barang) {
