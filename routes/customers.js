@@ -39,7 +39,6 @@ module.exports = function(db) {
     VALUES ('${req.body.kocus}', '${req.body.namap}', '${req.body.namcus}', '${req.body.npwp}',
     '${req.body.alamat}', '${req.body.daerah}', '${req.body.kodepos}', '${req.body.email}',
     '${req.body.npp}', '${req.body.npk}')`, function(err, customersAdd) {
-
       if(err) {
         console.error(err);
       }
@@ -65,11 +64,10 @@ module.exports = function(db) {
           page: "customers",
           query: req.query,
           idURL: req.params.id,
-          moment: moment,
           userData: userData.rows,
           customerData: customerData.rows[0],
           user:req.session.user
-        })
+        });
       });
     });
   });
@@ -88,7 +86,6 @@ module.exports = function(db) {
   });
 
   //---------------------------------------------------------------//
-
   router.get('/delete/:id', userChecker, function (req, res) {
     let deleteCustomers = `DELETE FROM customers WHERE customersid = ${req.params.id}`
     db.query(deleteCustomers, function (err) {

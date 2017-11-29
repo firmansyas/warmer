@@ -1,6 +1,7 @@
 <% include ../partials/header %>
 <% include ../partials/menu %>
 <% include ../partials/sidebar %>
+<link rel="stylesheet" href="../stylesheets/metis/jquery.dataTables.min.css">
 
 <div class="bg-dark dk" id="wrap">
   <!-- #menu -->
@@ -80,10 +81,11 @@
   </div>
 </div>
 
+<script src="../javascripts/jquery.dataTables.min.js"></script>
 <script>
-$(function() {
-  Metis.MetisTable();
-  Metis.metisSortable();
+$(document).ready(function(){
+  $('#dataTable').DataTable();
 });
 </script>
+
 <% include ../partials/footer %>
