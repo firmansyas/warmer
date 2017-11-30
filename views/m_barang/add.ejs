@@ -41,6 +41,18 @@
                     </div>
                   </div>
 
+                  <div class="form-group">
+                    <label for="text1" class="control-label col-lg-2">Supplier</label>
+                    <div class="col-lg-9">
+                      <select id="text1" class="form-control" name="supplier">
+                        <option value="volvo">Choose Supplier</option>
+                        <% for(let x=0; x<supplierData.length; x++) {%>
+                          <option value="<%= supplierData[x].supplierid %>"><%= supplierData[x].nasup %></option>
+                          <% } %>
+                      </select>
+                    </div>
+                  </div>
+
                   <div class="form-actions no-margin-bottom">
                     <label class="control-label col-lg-2"></label>
                     <input type="submit" value="Submit" class="btn btn-primary">

@@ -5,7 +5,7 @@ const userChecker = require('../helper/userchecker')
 
 
 module.exports = function(db) {
-  router.get('/', function(req, res) {
+  router.get('/', userChecker, function(req, res) {
     let k_barangData = `SELECT * FROM kbarang`
     db.query(k_barangData, function (err, k_barangData) {
       if (err){
@@ -21,7 +21,7 @@ module.exports = function(db) {
   });
 
   //---------------------------------------------------------------//
-  router.get('/add', function(req, res) {
+  router.get('/add', userChecker, function(req, res) {
     let query = `SELECT * FROM users`
     db.query(query, function (err, userData) {
       res.render('k_barang/add', {
@@ -34,7 +34,7 @@ module.exports = function(db) {
   });
 
   //---------------------------------------------------------------//
-  router.post('/add', function (req, res) {
+  router.post('/add', userChecker, function (req, res) {
     let addData = `INSERT INTO kbarang (kokbarang, nakabar)
     VALUES ('${req.body.kokbarang}', '${req.body.nakabar}')`
 
@@ -47,7 +47,7 @@ module.exports = function(db) {
   })
 
   //---------------------------------------------------------------//
-  router.get('/edit/:id', function(req, res, next) {
+  router.get('/edit/:id', userChecker, function(req, res, next) {
     let userData = `SELECT * FROM users`
     db.query(userData, function (err, userData) {
       if (err){
