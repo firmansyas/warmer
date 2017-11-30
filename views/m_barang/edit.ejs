@@ -42,36 +42,39 @@
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Supplier</label>
                     <div class="col-lg-9">
-                      <select id="text1" class="form-control" name="supplier">
+                      <select id="supplier" class="form-control" name="supplier">
                         <option value="">Choose Supplier</option>
-                        <% for(let x=0; x<supplierData.length; x++) { %>
-                          <option value="<%=supplierData[x].supplierid%>"><%= supplierData[x].nasup %></option>
-                          <% } %>
-                        </select>
+                        <% for(let x=0; x<supplierData.length; x++) {%>
+                          <% if(m_barangData.supplierid === supplierData[x].supplierid) {%>
+                            <option value="<%= supplierData[x].supplierid %>"><%= supplierData[x].nasup %></option>
+                            <% } else {%>
+                              <option value="<%= supplierData[x].supplierid %>"><%= supplierData[x].nasup %></option>
+                              <% } %>
+                              <% } %>
+                            </select>
+                          </div>
+                        </div>
+
+
+                        <div class="form-actions no-margin-bottom">
+                          <label class="control-label col-lg-2"></label>
+                          <input type="submit" value="Submit" class="btn btn-primary">
+                          <a href="/m_barang" <button class="btn btn-danger" type="button" name="button">Cancel </a> </button>
+                        </div>
                       </div>
+
                     </div>
-                    <% console.log('string') %>
-
-
-                    <div class="form-actions no-margin-bottom">
-                      <label class="control-label col-lg-2"></label>
-                      <input type="submit" value="Submit" class="btn btn-primary">
-                      <a href="/m_barang" <button class="btn btn-danger" type="button" name="button">Cancel </a> </button>
-                    </div>
-                  </div>
-
+                  </form>
                 </div>
-              </form>
-            </div>
 
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
 
-    </div>
-  </div>
 
 
 
-
-  <% include ../partials/footer %>
+      <% include ../partials/footer %>

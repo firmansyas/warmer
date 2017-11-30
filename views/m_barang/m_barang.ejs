@@ -27,14 +27,14 @@
                     </tr>
                   </thead>
                   <tbody align="center">
-                    <% if(m_barangData || supplier.length > 0) { %>
+                    <% if(m_barangData.length > 0) { %>
                       <% for(let i = 0; i < m_barangData.length; i++) { %>
                         <tr>
                           <td> <%= i+1 %></td>
                           <td> <%= m_barangData[i].kombarang%> </td>
                           <td> <%= m_barangData[i].namebarang%> </td>
                           <td> <%= m_barangData[i].asalnegara%> </td>
-                          <td> <%= m_barangData[i].supplier %> </td>
+                          <td> <%= m_barangData[i].nasup %> </td>
                           <td>
                             <a href='/m_barang/edit/<%= m_barangData[i].mbarangid %>' style="text-decoration: none">
                               <button class="btn btn-success" type="button" name="button">

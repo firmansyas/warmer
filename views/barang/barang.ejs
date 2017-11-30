@@ -34,45 +34,41 @@
                       <th class="text-center">Action</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr class="text-center">
-                      <td> Trident</td>
-                      <td>Internet Explorer 4.0</td>
-                      <td>Internet Explorer 4.0</td>
-                      <td>Win 95+</td>
-                      <td>4</td>
-                      <td>X</td>
-                      <td>Trident</td>
-                      <td>Internet Explorer 4.0</td>
-                      <td>Win 95+</td>
-                      <td>4</td>
-                      <td>Internet Explorer 4.0</td>
-                      <td>
-                        <a href="/barang/details" <button class="btn btn-success" type="button" name="button">Details </a> </button> ||
-                        <a href="/barang/edit" <button class="btn btn-primary" type="button" name="button">Edit </a> </button> ||
-                        <button class="btn btn-danger" type="button" name="button" onclick="return confirm('Are you sure you want to delete this item?')"> delete </button>
-                      </td>
-                    </tr>
-                    <tr class="text-center">
-                      <td>abc</td>
-                      <td>Internet Explorer 4.0</td>
-                      <td>Internet Explorer 4.0</td>
-                      <td>Win 95+</td>
-                      <td>4</td>
-                      <td>X</td>
-                      <td>Trident</td>
-                      <td>Internet Explorer 4.0</td>
-                      <td>Win 95+</td>
-                      <td>1</td>
-                      <td>Internet Explorer 4.0</td>
-                      <td>
-                        <a href="/barang/details" <button class="btn btn-success" type="button" name="button">Details </a> </button> ||
-                        <a href="/barang/edit" <button class="btn btn-primary" type="button" name="button">Edit </a> </button> ||
-                        <button class="btn btn-danger" type="button" name="button" onclick="return confirm('Are you sure you want to delete this item?')"> delete </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                  <tbody align="center">
+                    <% if(barangData.length > 0) { %>
+                      <% for(let i = 0; i < barangData.length; i++) { %>
+                        <tr>
+                          <td> <%= i+1 %></td>
+                          <td> <%= barangData[i].kobar %> </td>
+                          <td> <%= barangData[i].nomorizin %> </td>
+                          <td> <%= barangData[i].nambar %> </td>
+                          <td> <%= barangData[i].supplier %> </td>
+                          <td> <%= barangData[i].asalnegara %> </td>
+                          <td> <%= barangData[i].kbarang %> </td>
+                          <td> <%= barangData[i].mbarang %> </td>
+                          <td> <%= barangData[i].spk %> </td>
+                          <td> <%= barangData[i].hbeli %> </td>
+                          <td> <%= barangData[i].stockawal %> </td>
+                          <td> <%= barangData[i].currentstock %> </td>
+                          <td>
+                            <a href='/barang/edit/<%= barangData[i].barangid %>' style="text-decoration: none">
+                              <button class="btn btn-success" type="button" name="button">
+                                edit
+                              </button>
+                            </a>
+                            <a href='/barang/delete/<%= barangData[i].barangid %>' style="text-decoration: none">
+                              <button class="btn btn-danger" type="button" name="button"
+                              onclick="return confirm('Are you sure you want to delete this item?')">
+                              Delete
+                            </button>
+                          </a>
+                          <% } %>
+                        </td>
+                        <% } %>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -80,13 +76,12 @@
       </div>
     </div>
   </div>
-</div>
 
-<script src="../javascripts/jquery.dataTables.min.js"></script>
-<script>
-$(document).ready(function(){
-  $('#dataTable').DataTable();
-});
-</script>
+  <script src="../javascripts/jquery.dataTables.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $('#dataTable').DataTable();
+  });
+  </script>
 
-<% include ../partials/footer %>
+  <% include ../partials/footer %>

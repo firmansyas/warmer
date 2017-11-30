@@ -6,10 +6,22 @@ const userChecker = require('../helper/userchecker')
 
 module.exports = function(db) {
   router.get('/', function(req, res, next) {
+    let barangData = `SELECT * FROM barang`
 
-    res.render('barang/barang', {title: "Data Barang", page: "barang", user:req.session.user} );
+    db.query(barangData, function (err, barangData) {
+      if (err){
+        console.log(err);
+      }
+      res.render('barang/barang', {
+        title: "Data Barang",
+        page: "barang",
+        barangData: barangData.rows,
+        user:req.session.user
+      });
+    });
   });
 
+  //---------------------------------------------------------------//
   router.get('/add', userChecker, function(req, res) {
     db.query("SELECT * FROM users", function(err, barangData) {
       res.render('barang/add', {title: "Tambah Data Barang", page: "barang", barangData: barangData.rows, user:req.session.user} );

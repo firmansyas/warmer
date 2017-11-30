@@ -6,17 +6,18 @@ const moment = require('moment')
 
 module.exports = function(db) {
   router.get('/', userChecker, function(req, res) {
-    let m_barangData = `SELECT * FROM mbarang`
+    let m_barangData = `SELECT mbarangid, kombarang, namebarang, mbarang.asalnegara, nasup FROM mbarang, supplier WHERE supplier.supplierid = mbarang.supplier`
     db.query(m_barangData, function (err, m_barangData) {
       if (err){
         console.log(err);
       }
-      console.log('data barang', m_barangData);
+
       res.render('m_barang/m_barang', {
         title: "Data Merk Barang",
         page: "m_barang",
         m_barangData: m_barangData.rows,
         user:req.session.user
+
       });
     })
   });
@@ -24,7 +25,7 @@ module.exports = function(db) {
   //---------------------------------------------------------------//
   router.get('/add', userChecker, function(req, res) {
     let query = `SELECT * FROM users`
-    let supplierData = `SELECT * FROM supplier`
+    let supplierData = `SELECT mbarangid, kombarang, namebarang, mbarang.asalnegara, supplierid, nasup FROM mbarang, supplier WHERE supplier.supplierid = mbarang.supplier`
     db.query(query, function (err, userData) {
       db.query(supplierData, function (err, supplierData) {
         console.log('datacos', supplierData);
@@ -43,7 +44,7 @@ module.exports = function(db) {
   router.post('/add', userChecker, function (req, res) {
     let addData = `INSERT INTO mbarang (kombarang, namebarang, asalnegara, supplier)
     VALUES ('${req.body.kombarang}','${req.body.namebarang}',
-    '${req.body.asalnegara}','${req.body.supplier}')`
+    '${req.body.asalnegara}', '${req.body.supplier}')`
 
     db.query(addData, function (err, addData) {
       if (err){
@@ -76,7 +77,7 @@ module.exports = function(db) {
             page: "m_barang",
             query: req.query,
             idURL: req.params.id,
-            supplierData: supplierData.rows[0],
+            supplierData: supplierData.rows,
             m_barangData: m_barangData.rows[0],
             userData: userData.rows,
             user:req.session.user
@@ -89,7 +90,7 @@ module.exports = function(db) {
   //---------------------------------------------------------------//
   router.post('/edit/:id', userChecker, function (req, res) {
     let editM_barang = `UPDATE mbarang SET kombarang = '${req.body.kombarang}',
-    namebarang = '${req.body.namebarang}', asalnegara = '${req.body.asalnegara}','${req.body.supplier}' WHERE mbarangid = ${req.params.id}`;
+    namebarang = '${req.body.namebarang}', asalnegara = '${req.body.asalnegara}', supplier = '${req.body.supplier}' WHERE mbarangid = '${req.params.id}'`;
     db.query(editM_barang, function (err, editM_barang) {
       if (err) {
         console.log(err);
