@@ -25,7 +25,7 @@ module.exports = function(db) {
   //---------------------------------------------------------------//
   router.get('/add', userChecker, function(req, res) {
     let query = `SELECT * FROM users`
-    let supplierData = `SELECT mbarangid, kombarang, namebarang, mbarang.asalnegara, supplierid, nasup FROM mbarang, supplier WHERE supplier.supplierid = mbarang.supplier`
+    let supplierData = `SELECT supplierid, nasup FROM supplier`
     db.query(query, function (err, userData) {
       db.query(supplierData, function (err, supplierData) {
         console.log('datacos', supplierData);
@@ -69,7 +69,7 @@ module.exports = function(db) {
         if(err){
           console.log(err);
         }
-        let supplierData = `SELECT * FROM supplier`
+        let supplierData = `SELECT supplierid, nasup FROM supplier`
         db.query(supplierData, function (err, supplierData) {
           console.log('data supel', supplierData);
           res.render('m_barang/edit', {
