@@ -8,8 +8,7 @@ const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
-
-
+const helmet = require('helmet');
 
 
 //connecting to database
@@ -48,7 +47,7 @@ var calendar = require("./routes/calendar") (client);
 
 
 var app = express();
-
+app.use(helmet())
 app.use(fileUpload());
 
 // view engine setup
@@ -69,6 +68,15 @@ app.use(session({
 
 app.use(flash());
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(helmet.noCache())
+app.use(helmet.frameguard())
+
+app.use(helmet({
+  frameguard: {
+    action: 'deny'
+  }
+}))
 
 app.use('/', index);
 app.use('/users', users);

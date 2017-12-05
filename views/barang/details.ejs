@@ -1,6 +1,32 @@
 <% include ../partials/header %>
 <% include ../partials/menu %>
-<% include ../partials/sidebar %>
+
+<!-- samping -->
+<div id="left">
+  <div class="media user-media bg-dark dker">
+    <div class="user-media-toggleHover">
+      <span class="fa fa-user"></span>
+    </div>
+
+    <div class="user-wrapper bg-dark">
+      <a class="user-link" href="">
+        <img class="media-object img-thumbnail user-img" alt="User Picture" src="../../images/ikan.jpg" style="width:64px;height:64px;">
+      </a>
+
+      <div class="media-body">
+        <h5 class="media-heading"><%= item.firstname + ' ' + item.lastname %></h5>
+        <ul class="list-unstyled user-info">
+          <li><a href=""> <%= item.privilege %></a></li>
+          <li>Last Access : <br>
+            <small><i class="fa fa-calendar"></i>&nbsp;<%= item.lastlogin %></small>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% include ../partials/sidebar %>
+  
 <div class="bg-dark dk" id="wrap">
   <div id="content">
     <div class="outer">
@@ -15,11 +41,11 @@
               </header>
               <div id="div-8" class="body">
                 <a href="/barang" style="text-decoration:none">  <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i> </a>
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="GET">
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-1">Nama Barang  </label>
                     <div class="col-lg-7">
-                      <input type="email" id="text1" name="email" class="form-control" readonly>
+                      <input type="email" id="text1" name="email" class="form-control" value="<%= namaBarang.nambar %>"readonly>
                     </div>
                   <div class="col-md-4">
                     <div class="panel panel-success">

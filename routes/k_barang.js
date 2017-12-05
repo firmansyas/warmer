@@ -6,28 +6,30 @@ const userChecker = require('../helper/userchecker')
 
 module.exports = function(db) {
   router.get('/', userChecker, function(req, res) {
-    let k_barangData = `SELECT * FROM kbarang`
-    db.query(k_barangData, function (err, k_barangData) {
-      if (err){
-        console.log(err);
-      }
-      res.render('k_barang/k_barang', {
-        title: "Data Kategori Barang",
-        page: "k_barang",
-        k_barangData: k_barangData.rows,
-        user:req.session.user
+    db.query (`select * from users where userid = ${req.session.user.userid}`, (err, data) => {
+      let k_barangData = `SELECT * FROM kbarang`
+      db.query(k_barangData, function (err, k_barangData) {
+        if (err){
+          console.log(err);
+        }
+        res.render('k_barang/k_barang', {
+          title: "Data Kategori Barang",
+          page: "k_barang",
+          item: data.rows[0],
+          k_barangData: k_barangData.rows,
+          user:req.session.user
+        })
       });
     });
   });
 
   //---------------------------------------------------------------//
   router.get('/add', userChecker, function(req, res) {
-    let query = `SELECT * FROM users`
-    db.query(query, function (err, userData) {
+    db.query (`select * from users where userid = ${req.session.user.userid}`, (err, data) => {
       res.render('k_barang/add', {
         title: "Tambah Data Kategori Barang",
         page: "k_barang",
-        userData: userData.rows,
+        item: data.rows[0],
         user:req.session.user
       });
     });
@@ -48,8 +50,7 @@ module.exports = function(db) {
 
   //---------------------------------------------------------------//
   router.get('/edit/:id', userChecker, function(req, res, next) {
-    let userData = `SELECT * FROM users`
-    db.query(userData, function (err, userData) {
+    db.query (`select * from users where userid = ${req.session.user.userid}`, (err, data) => {
       if (err){
         console.log(err);
       }
@@ -63,7 +64,7 @@ module.exports = function(db) {
           page: "m_barang",
           query: req.query,
           idURL: req.params.id,
-          userData: userData.rows,
+          item: data.rows[0],
           k_barangData: k_barangData.rows[0],
           user:req.session.user
         });

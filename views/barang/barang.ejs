@@ -1,6 +1,32 @@
 <% include ../partials/header %>
 <% include ../partials/menu %>
-<% include ../partials/sidebar %>
+
+<!-- samping -->
+<div id="left">
+  <div class="media user-media bg-dark dker">
+    <div class="user-media-toggleHover">
+      <span class="fa fa-user"></span>
+    </div>
+
+    <div class="user-wrapper bg-dark">
+      <a class="user-link" href="">
+        <img class="media-object img-thumbnail user-img" alt="User Picture" src="../../images/ikan.jpg" style="width:64px;height:64px;">
+      </a>
+
+      <div class="media-body">
+        <h5 class="media-heading"><%= item.firstname + ' ' + item.lastname %></h5>
+        <ul class="list-unstyled user-info">
+          <li><a href=""> <%= item.privilege %></a></li>
+          <li>Last Access : <br>
+            <small><i class="fa fa-calendar"></i>&nbsp;<%= item.lastlogin %></small>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% include ../partials/sidebar %>
+  
 <link rel="stylesheet" href="../stylesheets/metis/jquery.dataTables.min.css">
 
 <div class="bg-dark dk" id="wrap">
@@ -39,25 +65,30 @@
                       <% for(let i = 0; i < barangData.length; i++) { %>
                         <tr>
                           <td> <%= i+1 %></td>
-                          <td> <%= barangData[i].kobar %> </td>
+                          <td> <%= barangData[i].kobarang %> </td>
                           <td> <%= barangData[i].nomorizin %> </td>
                           <td> <%= barangData[i].nambar %> </td>
-                          <td> <%= barangData[i].supplier %> </td>
+                          <td> <%= barangData[i].nasup %> </td>
                           <td> <%= barangData[i].asalnegara %> </td>
-                          <td> <%= barangData[i].kbarang %> </td>
-                          <td> <%= barangData[i].mbarang %> </td>
+                          <td> <%= barangData[i].nakabar %> </td>
+                          <td> <%= barangData[i].namebarang %> </td>
                           <td> <%= barangData[i].spk %> </td>
                           <td> <%= barangData[i].hbeli %> </td>
                           <td> <%= barangData[i].stockawal %> </td>
                           <td> <%= barangData[i].currentstock %> </td>
                           <td>
                             <a href='/barang/edit/<%= barangData[i].barangid %>' style="text-decoration: none">
-                              <button class="btn btn-success" type="button" name="button">
-                                edit
+                              <button class="btn btn-success btn-block" type="button" name="button">
+                                Edit
+                              </button>
+                            </a>
+                            <a href='/barang/details/<%= barangData[i].barangid %>' style="text-decoration: none">
+                              <button class="btn btn-primary btn-block" type="button" name="button">
+                                Details
                               </button>
                             </a>
                             <a href='/barang/delete/<%= barangData[i].barangid %>' style="text-decoration: none">
-                              <button class="btn btn-danger" type="button" name="button"
+                              <button class="btn btn-danger btn-block" type="button" name="button"
                               onclick="return confirm('Are you sure you want to delete this item?')">
                               Delete
                             </button>

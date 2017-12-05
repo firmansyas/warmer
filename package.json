@@ -17,10 +17,12 @@
     "express-fileupload": "^0.3.0",
     "express-session": "^1.15.5",
     "favicon": "0.0.2",
+    "helmet": "^3.9.0",
     "moment": "^2.19.1",
     "morgan": "~1.8.1",
     "password-hash": "^1.2.2",
     "pg": "^7.3.0",
+    "reload": "^2.2.2",
     "serve": "^6.1.0",
     "serve-favicon": "~2.4.2"
   },

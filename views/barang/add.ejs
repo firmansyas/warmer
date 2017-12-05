@@ -1,6 +1,32 @@
 <% include ../partials/header %>
 <% include ../partials/menu %>
-<% include ../partials/sidebar %>
+
+<!-- samping -->
+<div id="left">
+  <div class="media user-media bg-dark dker">
+    <div class="user-media-toggleHover">
+      <span class="fa fa-user"></span>
+    </div>
+
+    <div class="user-wrapper bg-dark">
+      <a class="user-link" href="">
+        <img class="media-object img-thumbnail user-img" alt="User Picture" src="../../images/ikan.jpg" style="width:64px;height:64px;">
+      </a>
+
+      <div class="media-body">
+        <h5 class="media-heading"><%= item.firstname + ' ' + item.lastname %></h5>
+        <ul class="list-unstyled user-info">
+          <li><a href=""> <%= item.privilege %></a></li>
+          <li>Last Access : <br>
+            <small><i class="fa fa-calendar"></i>&nbsp;<%= item.lastlogin %></small>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% include ../partials/sidebar %>
+  
 <div class="bg-dark dk" id="wrap">
   <!-- #menu -->
   <div id="content">
@@ -16,7 +42,7 @@
               </header>
 
               <div id="div-4" class="body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="POST" action="/barang/add">
 
 
                   <a href="/barang" style="text-decoration:none">  <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i> </a>
@@ -24,101 +50,109 @@
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Kode Barang</label>
                     <div class="col-lg-9">
-                      <input type="email" id="text1" placeholder="Email" name="email" class="form-control">
+                      <input type="text" id="text1" placeholder="" name="kobarang" class="form-control">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Nomer Izin Edar</label>
-
                     <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="First Name" name="firstname" class="form-control" >
+                      <input type="number" id="text1" placeholder="" name="nomorizin" class="form-control" >
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Nama Barang</label>
                     <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="Last Name" name="lastname" class="form-control" >
+                      <input type="text" id="text1" placeholder="" name="nambar" class="form-control" >
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text1" class="control-label col-lg-2">Supplier</label>
                     <div class="col-lg-9">
-                      <select id="text1" class="form-control">
-                        <option value="volvo">Volvo</option>
-                      </select>
+                      <select id="text1" class="form-control" name="supplier">
+                        <option value="">Pilih Supplier</option>
+                        <% for(let x=0; x<supplierData.length; x++) {%>
+                          <option value="<%= supplierData[x].supplierid %>"><%= supplierData[x].nasup %></option>
+                          <% } %>
+                        </select>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="form-group">
-                    <label for="text1" class="control-label col-lg-2">Asal Negara</label>
-                    <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="" name="pass" class="form-control" >
+                    <div class="form-group">
+                      <label for="text1" class="control-label col-lg-2">Asal Negara</label>
+                      <div class="col-lg-9">
+                        <input type="text" id="text1" placeholder="" name="asalnegara" class="form-control" >
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="form-group">
-                    <label for="text1" class="control-label col-lg-2">Kategori Barang</label>
-                    <div class="col-lg-9">
-                      <select id="text1" class="form-control">
-                        <option value="volvo">Volvo</option>
-                      </select>
+                    <div class="form-group">
+                      <label for="text1" class="control-label col-lg-2">Kategori Barang</label>
+                      <div class="col-lg-9">
+                        <select id="text1" class="form-control" name="kbarang">
+                          <option value="">Pilih Kategori</option>
+                          <% for(let x=0; x<k_barangData.length; x++) {%>
+                            <option value="<%= k_barangData[x].kbarangid %>"><%= k_barangData[x].nakabar %></option>
+                            <% } %>
+                          </select>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="text1" class="control-label col-lg-2">Merk Barang</label>
+                        <div class="col-lg-9">
+                          <select id="text1" class="form-control" name="mbarang">
+                            <option value="">Pilih Merek</option>
+                            <% for(let x=0; x<m_barangData.length; x++) {%>
+                              <option value="<%= m_barangData[x].mbarangid %>"><%= m_barangData[x].namebarang %></option>
+                              <% } %>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="text1" class="control-label col-lg-2">Spesifikasi Khusus</label>
+                          <div class="col-lg-9">
+                            <input type="text" id="text1" placeholder="" name="spk" class="form-control" >
+                          </div>
+                        </div>
+
+
+                        <div class="form-group">
+                          <label for="text1" class="control-label col-lg-2">Harga Beli Barang (Rp)</label>
+                          <div class="col-lg-9">
+                            <input type="number" id="text1" placeholder="" name="hbeli" class="form-control" />
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="text1" class="control-label col-lg-2">Stock Awal</label>
+                          <div class="col-lg-9">
+                            <input type="number" id="text1" placeholder="" name="stockawal" class="form-control" >
+                          </div>
+                        </div>
+
+                        <div class="form-actions no-margin-bottom">
+                          <label class="control-label col-lg-2"></label>
+                          <input type="submit" value="Submit" class="btn btn-primary">
+                          <input type="reset" value="Reset" class="btn btn-danger"> </a>
+                        </div>
+                      </div>
+
                     </div>
-                  </div>
-
-
-                  <div class="form-group">
-                    <label for="text1" class="control-label col-lg-2">Merk Barang</label>
-                    <div class="col-lg-9">
-                      <select id="text1" class="form-control">
-                        <option value="volvo">Volvo</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="text1" class="control-label col-lg-2">Spesifikasi Khusus</label>
-                    <div class="col-lg-9">
-                      <input type="text" id="text1" placeholder="Last Name" name="lastname" class="form-control" >
-                    </div>
-                  </div>
-
-
-                  <div class="form-group">
-                    <label for="text1" class="control-label col-lg-2">Harga Beli Barang (Rp)</label>
-                    <div class="col-lg-9">
-                      <input type="number" id="currency" placeholder="" name="currency" class="form-control" />
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="text1" class="control-label col-lg-2">Stock Awal</label>
-                    <div class="col-lg-9">
-                      <input type="number" id="text1" placeholder="" name="pass" class="form-control" >
-                    </div>
-                  </div>
-
-                  <div class="form-actions no-margin-bottom">
-                    <label class="control-label col-lg-2"></label>
-                    <input type="submit" value="Submit" class="btn btn-primary">
-                    <input type="reset" value="Reset" class="btn btn-danger"> </a>
-                  </div>
+                  </form>
                 </div>
 
               </div>
-            </form>
+            </div>
           </div>
 
         </div>
       </div>
-    </div>
-
-  </div>
-</div>
 
 
 
 
-<% include ../partials/footer %>
+      <% include ../partials/footer %>

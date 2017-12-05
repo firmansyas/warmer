@@ -43,10 +43,10 @@
                     <label for="text1" class="control-label col-lg-2">Supplier</label>
                     <div class="col-lg-9">
                       <select id="supplier" class="form-control" name="supplier">
-                        <option value="">Choose Supplier</option>
+                        <option value="<%= m_barangData.supplierid + 1 %>">Choose Supplier</option>
                         <% for(let x=0; x<supplierData.length; x++) {%>
                           <% if(m_barangData.supplierid === supplierData[x].supplierid) {%>
-                            <option value="<%= supplierData[x].supplierid %>"><%= supplierData[x].nasup %></option>
+                            <option value="<%= supplierData[x].supplierid %>" selected><%= supplierData[x].nasup %></option>
                             <% } else {%>
                               <option value="<%= supplierData[x].supplierid %>"><%= supplierData[x].nasup %></option>
                               <% } %>

@@ -64,7 +64,7 @@ module.exports = function(db) {
       if (err){
         console.log(err);
       }
-      let m_barangData = `SELECT * FROM mbarang WHERE mbarangid = ${req.params.id}`
+      let m_barangData = `SELECT * FROM mbarang WHERE mbarangid = '${req.params.id}'`
       db.query(m_barangData, function (err, m_barangData) {
         if(err){
           console.log(err);

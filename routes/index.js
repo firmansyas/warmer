@@ -8,6 +8,7 @@ const moment = require('moment');
 module.exports = function(db) {
   router.get('/', function(req, res, next) {
     //frontpage
+
     var message = new Array(req.flash('loginMessage')[0])
     res.render('main_menu/index', { title: 'Login Page', message: message } );
   });
@@ -25,7 +26,7 @@ module.exports = function(db) {
           delete data.rows[0].password;
           req.session.user = data.rows[0]
           console.log('apa');
-          db.query(`UPDATE users SET lastlogin = '${moment().format('LLLL')}' WHERE email = '${req.body.email}'`, function(err, updatedata) {
+          db.query(`UPDATE users SET lastlogin = '${moment().locale('id').format('dddd, Do MMMM YYYY HH:mm')}' WHERE email = '${req.body.email}'`, function(err, updatedata) {
             // console.log('test', `UPDATE users SET lastlogin = '${moment().format('LLLL')}' WHERE email = ${req.body.email}`);
             // console.log('ini', updatedata);
             return res.redirect('/home')
@@ -81,12 +82,15 @@ module.exports = function(db) {
   });
   router.get('/home', userChecker, function(req, res) {
     let customersData = `SELECT count(*) as total FROM customers`
-    db.query(customersData, function (err, customersData) {
-      res.render('main_menu/home', {
-        title: 'Welcome',
-        page: "home",
-        customersData: customersData.rows[0],
-        user: req.session.user
+    db.query (`select * from users where userid = ${req.session.user.userid}`, (err, data) => {
+      db.query(customersData, function (err, customersData) {
+        res.render('main_menu/home', {
+          title: 'Welcome',
+          page: "home",
+          customersData: customersData.rows[0],
+          item: data.rows[0],
+          user: req.session.user
+        })
       });
     })
   });
